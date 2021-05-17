@@ -1,0 +1,21 @@
+/* 1. Use a custom Google Fonts for highlights
+      font-family: 'Mystery Quest', cursive;
+   2. A standard sans-serif web font for data (Arial, Verdana, or Helvetica)
+      Helvetica
+   3. A standard serif web font for text (Georgia, Times, etc)
+      Georgia
+   4. Different font colors for all three fonts used
+   5. Background color for the default page
+      #FDC689
+   6. A different background color for elements such as, boxes or tables
+*/
+
+body {
+  background-color: #FDC689;
+  color: #1C2431;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 600;
+}
