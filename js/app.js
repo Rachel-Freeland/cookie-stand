@@ -19,7 +19,6 @@ const seattleStore = {
   }
 };
 
-
 const tokyoStore = {
   store: 'Tokyo',
   minCustomers: 3,
@@ -78,7 +77,7 @@ const limaStore = {
 // Build out the Seattle store sales
 const seattleDivElem = document.getElementById('seattleSales');
 
-function makeSeattleSalesUl(seattleStore) {
+function makeSeattleSalesDiv(seattleStore) {
   // Create the h2 heading and attach to the div element
   const h2Elem = document.createElement('h2');
   seattleDivElem.appendChild(h2Elem);
@@ -96,7 +95,6 @@ function makeSeattleSalesUl(seattleStore) {
     liElem.textContent = `${seattleStore.storeHours[i]} ${seattleStore.cookiesSoldPerHour[i]}`;
     seattleStore.totalCookiesPerDay += seattleStore.cookiesSoldPerHour[i];
     if (i === seattleStore.storeHours.length - 1) {
-      console.log(seattleStore.totalCookiesPerDay, seattleStore.cookiesSoldPerHour);
       const lastLiElem = document.createElement('li');
       seattleDivElem.lastChild.appendChild(lastLiElem);
       lastLiElem.textContent = `Total: ${seattleStore.totalCookiesPerDay}`;
@@ -107,7 +105,7 @@ function makeSeattleSalesUl(seattleStore) {
 // Build out the Tokyo store sales
 const tokyoDivElem = document.getElementById('tokyoSales');
 
-function makeTokyoSalesUl(tokyoStore) {
+function makeTokyoSalesDiv(tokyoStore) {
   // Create the h2 heading and attach to the div element
   const h2Elem = document.createElement('h2');
   tokyoDivElem.appendChild(h2Elem);
@@ -125,7 +123,6 @@ function makeTokyoSalesUl(tokyoStore) {
     liElem.textContent = `${tokyoStore.storeHours[i]}  ${tokyoStore.cookiesSoldPerHour[i]}`;
     tokyoStore.totalCookiesPerDay += tokyoStore.cookiesSoldPerHour[i];
     if (i === tokyoStore.storeHours.length - 1) {
-      // console.log(tokyoStore.totalCookiesPerDay, tokyoStore.cookiesSoldPerHour);
       const lastLiElem = document.createElement('li');
       tokyoDivElem.lastChild.appendChild(lastLiElem);
       lastLiElem.textContent = `Total: ${tokyoStore.totalCookiesPerDay}`;
@@ -133,43 +130,102 @@ function makeTokyoSalesUl(tokyoStore) {
   }
 }
 
-// // Build out the Dubai store sales
-// const dubaiDivElem = document.getElementById('dubaiSales');
+// Build out the Dubai store sales
+const dubaiDivElem = document.getElementById('dubaiSales');
 
-// function makeDubaiSalesUl(dubaiStore) {
-//   // Create the h2 heading and attach to the div element
-//   const h2Elem = document.createElement('h2');
-//   dubaiDivElem.appendChild(h2Elem);
-//   h2Elem.textContent = dubaiStore.store;
+function makeDubaiSalesDiv(dubaiStore) {
+  // Create the h2 heading and attach to the div element
+  const h2Elem = document.createElement('h2');
+  dubaiDivElem.appendChild(h2Elem);
+  h2Elem.textContent = dubaiStore.store;
 
-//   // Create the ul tag and attach to the div element
-//   const uLElem = document.createElement('ul');
-//   dubaiDivElem.appendChild(uLElem);
+  // Create the ul tag and attach to the div element
+  const ulElem = document.createElement('ul');
+  dubaiDivElem.appendChild(ulElem);
 
-//   // Create an li tag for each hour with cookie sales data
-//   for (let i = 0; i < dubaiStore.storeHours.length; i++) {
-//     const liElem = document.createElement('li');
-//     dubaiDivElem.lastChild.appendChild(liElem);
-//     dubaiStore.setCookiesSoldPerHour();
-//     liElem.textContent = `${dubaiStore.storeHours[i]} ${dubaiStore.cookiesSoldPerHour[i]}`;
-//     dubaiStore.totalCookiesPerDay += dubaiStore.cookiesSoldPerHour[i];
-//     if (i === dubaiStore.storeHours.length - 1) {
-//       // console.log(dubaiStore.totalCookiesPerDay, dubaiStore.cookiesSoldPerHour);
-//       const lastLiElem = document.createElement('li');
-//       dubaiDivElem.lastChild.appendChild(lastLiElem);
-//       lastLiElem.textContent = `Total: ${dubaiStore.totalCookiesPerDay}`;
-//     }
-//   }
-// }
+  // Create an li tag for each hour with cookie sales data
+  for (let i = 0; i < dubaiStore.storeHours.length; i++) {
+    const liElem = document.createElement('li');
+    dubaiDivElem.lastChild.appendChild(liElem);
+    dubaiStore.setCookiesSoldPerHour();
+    liElem.textContent = `${dubaiStore.storeHours[i]} ${dubaiStore.cookiesSoldPerHour[i]}`;
+    dubaiStore.totalCookiesPerDay += dubaiStore.cookiesSoldPerHour[i];
+    if (i === dubaiStore.storeHours.length - 1) {
+      const lastLiElem = document.createElement('li');
+      dubaiDivElem.lastChild.appendChild(lastLiElem);
+      lastLiElem.textContent = `Total: ${dubaiStore.totalCookiesPerDay}`;
+    }
+  }
+}
+
+// Build out the Paris store sales
+const parisDivElem = document.getElementById('parisSales');
+
+function makeParisSalesDiv(parisStore) {
+  // Create the h2 heading and attach to the div element
+  const h2Elem = document.createElement('h2');
+  parisDivElem.appendChild(h2Elem);
+  h2Elem.textContent = parisStore.store;
+
+  // Create the ul tag and attach to the div element
+  const ulElem = document.createElement('ul');
+  parisDivElem.appendChild(ulElem);
+
+  // Create an li tag for each hour with cookie sales data
+  for (let i = 0; i < parisStore.storeHours.length; i++) {
+    const liElem = document.createElement('li');
+    parisDivElem.lastChild.appendChild(liElem);
+    parisStore.setCookiesSoldPerHour();
+    liElem.textContent = `${parisStore.storeHours[i]} ${parisStore.cookiesSoldPerHour[i]}`;
+    parisStore.totalCookiesPerDay += parisStore.cookiesSoldPerHour[i];
+    if (i === parisStore.storeHours.length - 1) {
+      const lastLiElem = document.createElement('li');
+      parisDivElem.lastChild.appendChild(lastLiElem);
+      lastLiElem.textContent = `Total: ${dubaiStore.totalCookiesPerDay}`;
+    }
+  }
+}
+
+// Build out the Lima store sales
+const limaDivElem = document.getElementById('limaSales');
+
+function makeLimaSalesDiv(limaStore) {
+  // Create the h2 heading and attach to the div element
+  const h2Elem = document.createElement('h2');
+  limaDivElem.appendChild(h2Elem);
+  h2Elem.textContent = limaStore.store;
+
+  // Create the ul tag and attach to the div element
+  const ulElem = document.createElement('ul');
+  limaDivElem.appendChild(ulElem);
+
+  // Create an li tag for each hour with cookie sales data
+  for (let i = 0; i < parisStore.storeHours.length; i++) {
+    const liElem = document.createElement('li');
+    limaDivElem.lastChild.appendChild(liElem);
+    limaStore.setCookiesSoldPerHour();
+    liElem.textContent = `${limaStore.storeHours[i]} ${limaStore.cookiesSoldPerHour[i]}`;
+    limaStore.totalCookiesPerDay += limaStore.cookiesSoldPerHour[i];
+    if (i === limaStore.storeHours.length - 1) {
+      const lastLiElem = document.createElement('li');
+      limaDivElem.lastChild.appendChild(lastLiElem);
+      lastLiElem.textContent = `Total: ${limaStore.totalCookiesPerDay}`;
+    }
+  }
+}
+
+
 
 // This random function returns a result that is no lower than the minCustomers and is less than the maxCustomers
 function randomCustomersPerHour(minCustomers, maxCustomers) {
   return Math.floor(Math.random() * (maxCustomers - minCustomers) + minCustomers);
 }
 
-makeSeattleSalesUl(seattleStore);
-makeTokyoSalesUl(tokyoStore);
-// makeDubaiSalesUl(dubaiStore);
+makeSeattleSalesDiv(seattleStore);
+makeTokyoSalesDiv(tokyoStore);
+makeDubaiSalesDiv(dubaiStore);
+makeParisSalesDiv(parisStore);
+makeLimaSalesDiv(limaStore);
 
 // let totalCookiesPerDay = 0;
 // for (let i = 0, i < storeHours.length, i++) {
