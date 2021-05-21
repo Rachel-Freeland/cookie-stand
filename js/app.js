@@ -5,72 +5,44 @@
 // Use a method of the object the object to generate a random number of customers per hour
 // Calculate & store the simulated amounts of cookies purchased each hour at each location using avgCookiesPerCustomer and the randomCustomersPerHour()
 
+let storeHours = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '];
 
-const seattleStore = {
-  store: 'Seattle',
-  minCustomers: 23,
-  maxCustomers: 65,
-  avgCookiesPerCustomer: 6.3,
-  storeHours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '],
-  cookiesSoldPerHour: [], // Results of cookie sales for the store, stored as a property of the store
-  totalCookiesPerDay: 0,
-  setCookiesSoldPerHour: function() {
-    return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
-  }
+function Store (store, minCustomers, maxCustomers, avgCookiesPerCustomer, storeHours) {
+  this.store = store;
+  this.minCustomers = minCustomers;
+  this.maxCustomers = maxCustomers;
+  this.avgCookiesPerCustomer = avgCookiesPerCustomer;
+  this.storeHours = storeHours;
+  this.cookiesSoldPerHour = [];
+  this.totalCookiesPerDay = 0;
+}
+
+Store.prototype.setCookiesSoldPerHour = function() {
+  return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
 };
 
-const tokyoStore = {
-  store: 'Tokyo',
-  minCustomers: 3,
-  maxCustomers: 24,
-  avgCookiesPerCustomer: 1.2,
-  storeHours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '],
-  cookiesSoldPerHour: [], // Results of cookie sales for the store, stored as a property of the store
-  totalCookiesPerDay: 0,
-  setCookiesSoldPerHour: function() {
-    return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
-  }
-};
 
-const dubaiStore = {
-  store: 'Dubai',
-  minCustomers: 11,
-  maxCustomers: 38,
-  avgCookiesPerCustomer: 3.7,
-  storeHours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '],
-  cookiesSoldPerHour: [], //Results of cookies sales for the store, stored as a property of the store
-  totalCookiesPerDay: 0,
-  setCookiesSoldPerHour: function() {
-    return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
-  }
-};
+// const seattleStore = {
+//   store: 'Seattle',
+//   minCustomers: 23,
+//   maxCustomers: 65,
+//   avgCookiesPerCustomer: 6.3,
+//   storeHours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '],
+//   cookiesSoldPerHour: [], // Results of cookie sales for the store, stored as a property of the store
+//   totalCookiesPerDay: 0,
+//   setCookiesSoldPerHour: function() {
+//     return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
+//   }
+// };
 
-const parisStore = {
-  store: 'Paris',
-  minCustomers: 20,
-  maxCustomers: 38,
-  avgCookiesPerCustomer: 2.3,
-  storeHours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '],
-  cookiesSoldPerHour: [], //Results of cookies sales for the store, stored as a property of the store
-  totalCookiesPerDay: 0,
-  setCookiesSoldPerHour: function() {
-    return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
-  }
-};
 
-const limaStore = {
-  store: 'Lima',
-  minCustomers: 2,
-  maxCustomers: 16,
-  avgCookiesPerCustomer: 4.6,
-  storeHours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '],
-  cookiesSoldPerHour: [], //Results of cookies sales for the store, stored as a property of the store
-  totalCookiesPerDay: 0,
-  setCookiesSoldPerHour: function() {
-    return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
-  }
-};
-
+// create new stores
+let seattleStore = new Store('Seattle', 23, 65, 6.3, storeHours);
+console.log(seattleStore);
+let tokyoStore = new Store('Tokyo', 3, 24, 1.2, storeHours);
+let dubaiStore = new Store('Dubai', 11, 38, 3.7, storeHours);
+let parisStore = new Store('Parie', 20, 38, 2.3, storeHours);
+let limaStore = new Store('Lima', 2, 16, 4.6, storeHours);
 
 // Build out the sales.html page
 
@@ -219,17 +191,10 @@ function makeLimaSalesDiv(limaStore) {
 // This random function returns a result that is no lower than the minCustomers and is less than the maxCustomers
 function randomCustomersPerHour(minCustomers, maxCustomers) {
   return Math.floor(Math.random() * (maxCustomers - minCustomers) + minCustomers);
-}
+};
 
 makeSeattleSalesDiv(seattleStore);
 makeTokyoSalesDiv(tokyoStore);
 makeDubaiSalesDiv(dubaiStore);
 makeParisSalesDiv(parisStore);
 makeLimaSalesDiv(limaStore);
-
-// let totalCookiesPerDay = 0;
-// for (let i = 0, i < storeHours.length, i++) {
-//   setCookiesSoldPerHour();
-//   totalCookiesPerDay += cookiesSoldPerHour[i];
-//   console.log(totalCookiesPerDay, cookiesSoldPerHour);
-// }
