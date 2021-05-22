@@ -21,21 +21,6 @@ Store.prototype.setCookiesSoldPerHour = function() {
   return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
 };
 
-
-// const seattleStore = {
-//   store: 'Seattle',
-//   minCustomers: 23,
-//   maxCustomers: 65,
-//   avgCookiesPerCustomer: 6.3,
-//   storeHours: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '],
-//   cookiesSoldPerHour: [], // Results of cookie sales for the store, stored as a property of the store
-//   totalCookiesPerDay: 0,
-//   setCookiesSoldPerHour: function() {
-//     return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer)); // rounded up for fractions of cookies
-//   }
-// };
-
-
 // create new stores
 let seattleStore = new Store('Seattle', 23, 65, 6.3, storeHours);
 console.log(seattleStore);
@@ -191,7 +176,7 @@ function makeLimaSalesDiv(limaStore) {
 // This random function returns a result that is no lower than the minCustomers and is less than the maxCustomers
 function randomCustomersPerHour(minCustomers, maxCustomers) {
   return Math.floor(Math.random() * (maxCustomers - minCustomers) + minCustomers);
-};
+}
 
 makeSeattleSalesDiv(seattleStore);
 makeTokyoSalesDiv(tokyoStore);
