@@ -19,3 +19,15 @@ h1 {
   font-size: 2.5em;
   font-weight: 600;
 }
+
+caption {
+   border: 1px solid red;
+}
+
+th {
+   border: 1px solid black;
+}
+
+tr {
+   border: 1px solid green;
+}
