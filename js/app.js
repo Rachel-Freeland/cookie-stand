@@ -11,6 +11,7 @@ let storeHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', 
 let storeList = [];
 let fluxPerHour = [0.5, 0.75, 1.0, 0.6, 0.8, 1.0, 0.7, 0.4, 0.6, 0.9, 0.7, 0.5, 0.3, 0.4, 0.6];
 
+
 //----------------------------------------------------------------------------------------Constructor Functions----------------------------------------------------------------------------------------------
 
 function Store (store, minCustomers, maxCustomers, avgCookiesPerCustomer, storeHours) {
@@ -22,7 +23,7 @@ function Store (store, minCustomers, maxCustomers, avgCookiesPerCustomer, storeH
   this.cookiesSoldPerHour = [];
   this.totalCookiesPerDay = 0;
 
-  storeList.push(this.store);
+  storeList.push(store);
 }
 
 //-----------------------------------------------------------------------------------------------Prototypes--------------------------------------------------------------------------------------------------
@@ -31,7 +32,7 @@ Store.prototype.setCookiesSoldPerHour = function(i) {
   return this.cookiesSoldPerHour.push(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer) * fluxPerHour[i]); // rounded up for fractions of cookies
 };
 
-Store.prototype.render = render;
+// Store.prototype.render = render;
 
 //-----------------------------------------------------------------------------------------------Functions---------------------------------------------------------------------------------------------------
 
@@ -46,15 +47,17 @@ function createTableHead() {
   const tableCap = document.createElement('caption');
   tableCap.textContent = 'Cookie Sales';
   parentElem.appendChild(tableElem);
-  parentElem.appendChild(tableCap);
+  tableElem.appendChild(tableCap);
 
   const theadElem = document.createElement('thead');
-  parentElem.appendChild(theadElem);
+  tableElem.setAttribute('id', 'tableHead');
+  tableElem.appendChild(theadElem);
 
   const rowThead = document.createElement('tr');
   theadElem.appendChild(rowThead);
 
   const th1Elem = document.createElement('th');
+  th1Elem.textContent = '';
   rowThead.appendChild(th1Elem);
 
 
@@ -68,38 +71,40 @@ function createTableHead() {
   th2Elem.setAttribute('scope', 'col');
   th2Elem.textContent = 'Daily Total';
   rowThead.appendChild(th2Elem);
-
-  // Start of tbody
   const tbodyElem = document.createElement('tbody');
-  theadElem.appendChild(tbodyElem);
+  tbodyElem.setAttribute('id', 'tableBody');
+  tableElem.appendChild(tbodyElem);
 }
 
-function render() {
-  const tbodyElem = document.getElementsByTagName('tbody');
-  const tr1Elem = document.createElement('tr');
-  tbodyElem.appendChild(tr1Elem);
-
-  //create the data cells to hold location cookie sales data
-  const trElem = document.createElement('tr');
+function createTableBody(store) {
+  // Start of tbody
+  const tbodyElem = document.getElementById('tableBody');
+  const row1Elem = document.createElement('tr');
+  tbodyElem.appendChild(row1Elem);
+  // const trElem = document.getElementsByTagName('tr');
   const thElem = document.createElement('th');
   thElem.setAttribute('scope', 'row');
-  thElem.textContent = this.store;
-  trElem.appendChild(thElem);
+  thElem.textContent = `${store}`;
+  row1Elem.appendChild(thElem);
+  //create the data cells to hold location cookie sales data
 
-  for(let i=0; i < storeHours.length-1; i++) {
+  for(let hours in storeHours) {
     const tdElem = document.createElement('td');
-    tdElem.textContent = this.cookiesSoldPerHour[i];
-    trElem.lastChild.appendChild(tdElem);
-    this.totalCookiesPerDay += this.cookiesSoldPerHour[i];
+    tdElem.textContent = hours.cookiesSoldPerHour;
+    row1Elem.appendChild(tdElem);
+    storeHours.totalCookiesPerDay += hours.cookiesSoldPerHour;
   }
 
   const tdTotal = document.createElement('td');
-  tdTotal.textContent = this.totalCookiesPerDay;
-
+  tdTotal.textContent = store.totalCookiesPerDay;
 }
 
+// function render() {
+
+
+//}
+
 //--------------------------------------------------------------------------------------------Function Calls-------------------------------------------------------------------------------------------------
-createTableHead();
 // create new stores
 let seattle = new Store('Seattle', 23, 65, 6.3, storeHours);
 let tokyo = new Store('Tokyo', 3, 24, 1.2, storeHours);
@@ -107,13 +112,19 @@ let dubai = new Store('Dubai', 11, 38, 3.7, storeHours);
 let paris = new Store('Paris', 20, 38, 2.3, storeHours);
 let lima = new Store('Lima', 2, 16, 4.6, storeHours);
 
-seattle.setCookiesSoldPerHour();
-tokyo.setCookiesSoldPerHour();
-dubai.setCookiesSoldPerHour();
-paris.setCookiesSoldPerHour();
-lima.setCookiesSoldPerHour();
+createTableHead();
 
-seattle.render();
+for (let store of storeList){
+  createTableBody(store);
+}
+// tokyo.createTable();
+// seattle.setCookiesSoldPerHour();
+// tokyo.setCookiesSoldPerHour();
+// dubai.setCookiesSoldPerHour();
+// paris.setCookiesSoldPerHour();
+// lima.setCookiesSoldPerHour();
+
+// createTableHead(store);
 // tokyo.render();
 // dubai.render();
 // paris.render();
