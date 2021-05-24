@@ -19,15 +19,30 @@ h1 {
   font-size: 2.5em;
   font-weight: 600;
 }
+table {
+   font-family:Georgia, 'Times New Roman', Times, serif;
+   color:#5B2E00;
+   /* color: #381E01; */
+   margin: auto;
+   margin-top: 1.5%;
+   text-align: center;
+}
 
+tbody tr:nth-child(odd) {
+   background-color: #FCAA4F;
+}
 caption {
-   border: 1px solid red;
+   background-color: #FCAA4F;
+   padding: 1%;
 }
 
 th {
-   border: 1px solid black;
+   padding: 0.5%;
 }
 
-tr {
-   border: 1px solid green;
+td {
+   font-family:Arial, Helvetica, sans-serif;
+   color: #07080C;
 }
+
+
