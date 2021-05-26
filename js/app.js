@@ -8,9 +8,8 @@
 //-------------------------------------------------------------------------------------Global Variables / Arrays---------------------------------------------------------------------------------------------
 
 let storeHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
-let storeList = [];
 let fluxPerHour = [0.5, 0.75, 1.0, 0.6, 0.8, 1.0, 0.7, 0.4, 0.6, 0.9, 0.7, 0.5, 0.3, 0.4, 0.6];
-
+let storeList = [];
 
 //----------------------------------------------------------------------------------------Constructor Functions----------------------------------------------------------------------------------------------
 
@@ -24,16 +23,61 @@ function Store (store, minCustomers, maxCustomers, avgCookiesPerCustomer, storeH
   this.totalCookiesPerDay = 0;
 
   storeList.push(this);
+
 }
 
 //-----------------------------------------------------------------------------------------------Prototypes--------------------------------------------------------------------------------------------------
 
-Store.prototype.setCookiesSoldPerHour = function(i) {
-  return this.cookiesSoldPerHour(Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer) * fluxPerHour[i]); // rounded up for fractions of cookies
+function dailyTotals() {
+  for (let i = 0; i < storeHours.length; i++) {
+    console.log(storeHours[i]);
+    for (let k = 0; k < storeList.length; k++) {
+      console.log(storeList[k].cookiesSoldPerHour[i]);
+    }
+  }
+}
+
+
+
+Store.prototype.setCookiesSoldPerHour = function() {
+  for(let i = 0; i < storeHours.length; i++) {
+    this.cookiesSoldPerHour[i] = Math.ceil(randomCustomersPerHour(this.minCustomers, this.maxCustomers) * this.avgCookiesPerCustomer * fluxPerHour[i]); // rounded up for fractions of cookies
+  }
 };
 
 
-// Store.prototype.render = render;
+Store.prototype.createTableBody = function () {
+
+  // Start of tbody
+  const tbodyElem = document.getElementById('tableBody');
+  const row1Elem = document.createElement('tr');
+  tbodyElem.appendChild(row1Elem);
+
+  const thElem = document.createElement('th');
+  thElem.setAttribute('scope', 'row');
+  thElem.textContent = `${this.store}`;
+  row1Elem.appendChild(thElem);
+
+  // create the data cells to hold location cookie sales data
+
+  for(let i = 0; i < this.storeHours.length; i++) {
+    const tdElem = document.createElement('td');
+    tdElem.textContent = `${this.cookiesSoldPerHour[i]}`;
+    row1Elem.appendChild(tdElem);
+    this.totalCookiesPerDay += this.cookiesSoldPerHour[i];
+  }
+  const tdTotal = document.createElement('td');
+  tdTotal.textContent = this.totalCookiesPerDay;
+  row1Elem.appendChild(tdTotal);
+};
+
+function renderTableFooter () {
+  const tableParentElem = document.getElementById('table');
+  const tfootElem = document.createElement('tfoot');
+  tfootElem.setAttribute('id', 'tableFoot');
+  tableParentElem.appendChild(tfootElem);
+
+}
 
 //-----------------------------------------------------------------------------------------------Functions---------------------------------------------------------------------------------------------------
 
@@ -45,14 +89,14 @@ function randomCustomersPerHour(minCustomers, maxCustomers) {
 function createTableHead() {
   const parentElem = document.getElementById('cookieSales');
   const tableElem = document.createElement('table');
-  // tableElem.setAttribute('width', '80%');
+  tableElem.setAttribute('width', '80%');
   parentElem.appendChild(tableElem);
   const tableCap = document.createElement('caption');
   tableCap.textContent = 'Cookie Sales';
   tableElem.appendChild(tableCap);
 
   const theadElem = document.createElement('thead');
-  tableElem.setAttribute('id', 'tableHead');
+  tableElem.setAttribute('id', 'table');
   tableElem.appendChild(theadElem);
 
   const rowThead = document.createElement('tr');
@@ -81,35 +125,6 @@ function createTableHead() {
   tableElem.appendChild(tbodyElem);
 }
 
-function createTableBody() {
-  // Start of tbody
-  for (let i=0; i < storeList.length; i++) {
-    const tbodyElem = document.getElementById('tableBody');
-    const row1Elem = document.createElement('tr');
-    tbodyElem.appendChild(row1Elem);
-
-    const thElem = document.createElement('th');
-    thElem.setAttribute('scope', 'row');
-    thElem.textContent = storeList[i].store;
-    row1Elem.appendChild(thElem);
-  }
-
-  // create the data cells to hold location cookie sales data
-
-  for(let i = 0; i < storeHours.length; i++) {
-    const tdElem = document.createElement('td');
-    tdElem.textContent = this.setcookiesSoldPerHour;
-    row1Elem.appendChild(tdElem);
-    this.totalCookiesPerDay += this.cookiesSoldPerHour;
-  }
-  const tdTotal = document.createElement('td');
-  tdTotal.textContent = store.totalCookiesPerDay;
-
-  //   // function render() {
-
-
-}
-
 //--------------------------------------------------------------------------------------------Function Calls-------------------------------------------------------------------------------------------------
 // create new stores
 let seattle = new Store('Seattle', 23, 65, 6.3, storeHours);
@@ -117,37 +132,23 @@ let tokyo = new Store('Tokyo', 3, 24, 1.2, storeHours);
 let dubai = new Store('Dubai', 11, 38, 3.7, storeHours);
 let paris = new Store('Paris', 20, 38, 2.3, storeHours);
 let lima = new Store('Lima', 2, 16, 4.6, storeHours);
-console.log('Hello!');
+
 createTableHead();
-// seattle.createTableBody;
-createTableBody(tokyo);
+seattle.setCookiesSoldPerHour();
+seattle.createTableBody();
 
+tokyo.setCookiesSoldPerHour();
+tokyo.createTableBody();
 
+dubai.setCookiesSoldPerHour();
+dubai.createTableBody();
 
+paris.setCookiesSoldPerHour();
+paris.createTableBody();
 
+lima.setCookiesSoldPerHour();
+lima.createTableBody();
 
-// tokyo.createTable();
-// seattle.setCookiesSoldPerHour();
-// tokyo.setCookiesSoldPerHour();
-// dubai.setCookiesSoldPerHour();
-// paris.setCookiesSoldPerHour();
-// lima.setCookiesSoldPerHour();
+dailyTotals();
+renderTableFooter();
 
-// createTableHead(store);
-// tokyo.render();
-// dubai.render();
-// paris.render();
-// lima.render();
-// createTableFoot();
-
-
-// makeSeattleSalesDiv(seattleStore);
-
-// makeTokyoSalesDiv(tokyoStore);
-// makeDubaiSalesDiv(dubaiStore);
-// makeParisSalesDiv(parisStore);
-// makeLimaSalesDiv(limaStore);
-
-// const tdThead = document.createElement('td');
-// tdThead.textContent = ' ';
-// rowThead.appendChild('tdThead')
