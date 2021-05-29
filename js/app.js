@@ -10,6 +10,9 @@
 let storeHours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 let fluxPerHour = [0.5, 0.75, 1.0, 0.6, 0.8, 1.0, 0.7, 0.4, 0.6, 0.9, 0.7, 0.5, 0.3, 0.4, 0.6];
 let storeList = [];
+let allStoresPerHour = [];
+let finalDailyTotal = 0;
+
 
 //----------------------------------------------------------------------------------------Constructor Functions----------------------------------------------------------------------------------------------
 
@@ -30,10 +33,15 @@ function Store (store, minCustomers, maxCustomers, avgCookiesPerCustomer, storeH
 
 function dailyTotals() {
   for (let i = 0; i < storeHours.length; i++) {
-    console.log(storeHours[i]);
+    let allStores = 0;
     for (let k = 0; k < storeList.length; k++) {
-      console.log(storeList[k].cookiesSoldPerHour[i]);
+      allStores += storeList[k].cookiesSoldPerHour[i];
     }
+    allStoresPerHour[i] = allStores;
+  }
+
+  for (let i = 0; i < allStoresPerHour.length; i++) {
+    finalDailyTotal += allStoresPerHour[i];
   }
 }
 
@@ -77,6 +85,22 @@ function renderTableFooter () {
   tfootElem.setAttribute('id', 'tableFoot');
   tableParentElem.appendChild(tfootElem);
 
+  const trFootElem = document.createElement('tr');
+  tfootElem.appendChild(trFootElem);
+
+  const thFootElem = document.createElement('th');
+  thFootElem.textContent = 'Hourly Totals: ';
+  trFootElem.appendChild(thFootElem);
+
+  for (let i = 0; i < storeHours.length; i++){
+    const tdFootElem = document.createElement('td');
+    tdFootElem.textContent = allStoresPerHour[i] ;
+    trFootElem.appendChild(tdFootElem);
+  }
+
+  const tdFinalTotal = document.createElement('td');
+  tdFinalTotal.textContent = finalDailyTotal;
+  trFootElem.appendChild(tdFinalTotal);
 }
 
 //-----------------------------------------------------------------------------------------------Functions---------------------------------------------------------------------------------------------------
@@ -151,4 +175,3 @@ lima.createTableBody();
 
 dailyTotals();
 renderTableFooter();
-
