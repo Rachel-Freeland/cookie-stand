@@ -1,0 +1,172 @@
+body {
+  background-color: #FDC689;
+  color: #1C2431;
+  display: grid;
+  grid-template-columns: repeat(3, 33vw);
+  grid-template-rows: 20vh 30vh 30vh 10vh;
+}
+h1 {
+  color: #1C2431;
+  font-size: 3em;
+  font-family: 'Mystery Quest', cursive;
+}
+
+h2 {
+  font-size: 2.25em;
+  font-family: 'Mystery Quest', cursive;
+}
+
+header {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  margin-left: 1.25em;
+}
+
+header h1 {
+  padding: 1.25em;
+  text-align: center;
+  text-shadow: 2px 2px whitesmoke;
+}
+
+nav {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+nav li {
+  color: #1C2431;
+  font-size: 1.2em;
+  padding-left: 10em;
+  padding-top: 5em;
+}
+
+#fishCookies {
+  grid-column: 1/2;
+  grid-row: 3/5;
+  width: 30vw;
+  height: 30vh;
+  margin: auto auto;
+  padding-left: 10em;
+  padding-top: 1em;
+}
+
+img.rounded {
+  border-radius: 30%;
+  border: 1em #FF6700 solid;
+}
+
+
+
+#familyImg {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  margin: auto;
+}
+
+#familyImg img {
+  border: #FF6700 0.5em outset;
+  border-top-left-radius: 25%;
+  border-bottom-right-radius: 25%;
+  display: block;
+  height: 29vh;
+  margin-right: auto;
+  width: 32vw;
+}
+
+#aboutUs {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+
+#aboutUs h2 {
+  display: block;
+  text-align: center;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-shadow: 2px 2px whitesmoke;
+}
+
+#aboutUs p {
+  width: 60%;
+  justify-content: center;
+  margin: auto;
+}
+
+#cookie {
+  grid-column: 3/4;
+  grid-row: 3/5;
+  margin: auto auto;
+}
+
+#cookie img {
+  border: 0.3em #FF6700 solid;
+  border-radius: 25%;
+  vertical-align: middle;
+}
+
+#locations {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#locations h2 {
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  text-align: center;
+  text-shadow: 2px 2px whitesmoke;
+}
+
+#locations ul li{
+  font-size: 1.2em;
+  list-style-type: none;
+  padding: 0.5em;
+}
+
+#locations ul{
+  justify-content: center;
+}
+
+
+footer {
+  grid-column: 1/4;
+  grid-row: 4/5;
+  padding: 0.25em;
+  text-align: center;
+}
+
+footer h3 {
+  font-family: 'Mystery Quest', cursive;
+  font-size: 1.5em;
+  font-weight: 500;
+  text-shadow: 2px 2px whitesmoke;
+}
+
+footer a{
+  padding: 0.25em;
+}
+
+p {
+  font-family: 'Quicksand', sans-serif;
+}
+
+#shirt {
+  grid-column: 3/4;
+  grid-row: 1/3;
+  margin: auto;
+}
+
+#shirt img {
+  border: 0.5em #FF6700 solid;
+  border-radius: 25%;
+}
+
+#shirt p{
+  padding-top: 0.25em;
+  text-align: center;
+}
+
+
+

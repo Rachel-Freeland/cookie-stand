@@ -10,9 +10,16 @@
    6. A different background color for elements such as, boxes or tables
 */
 
+
+
 body {
   background-color: #FDC689;
   color: #1C2431;
+}
+
+caption {
+   background-color: #FCAA4F;
+   padding: 1%;
 }
 
 h1 {
@@ -31,18 +38,15 @@ table {
 tbody tr:nth-child(odd) {
    background-color: #FCAA4F;
 }
-caption {
-   background-color: #FCAA4F;
-   padding: 1%;
+
+td {
+   font-family:Arial, Helvetica, sans-serif;
+   color: #07080C;
 }
 
 th {
    padding: 0.5%;
 }
 
-td {
-   font-family:Arial, Helvetica, sans-serif;
-   color: #07080C;
-}
 
 
