@@ -15,11 +15,54 @@
 body {
   background-color: #FDC689;
   color: #1C2431;
+  display: grid;
+  grid-template-columns: 15vw 70vw 15vw;
+  grid-template-rows: 20vh 60vh 20vh;
 }
+
+h1 {
+  color: #1C2431;
+  font-size: 3em;
+  font-family: 'Mystery Quest', cursive;
+  text-shadow: 2px 2px whitesmoke;
+}
+
+header {
+   grid-column: 2/3;
+   grid-row: 1/2;
+   padding: 1.25em;
+}
+
+header h1 {
+   padding-top: 1.75em;
+   text-align: center;
+}
+
+#cookieSales {
+   grid-column: 2/3;
+   grid-row: 2/3;
+}
+
+nav {
+   grid-column: 1/2;
+   grid-row: 1/2;
+}
+
+nav li {
+   color: #1C2431;
+   font-size: 1.2em;
+   padding-left: 10em;
+   padding-top: 5em;
+ }
+
 
 caption {
    background-color: #FCAA4F;
+   color:#1C2431;
+   font-family: 'Mystery Quest', cursive;
+   font-size: 1.25em;
    padding: 1%;
+   text-shadow: 1px 1px whitesmoke;
 }
 
 h1 {
@@ -48,5 +91,16 @@ th {
    padding: 0.5%;
 }
 
+table, th, td {
+   border: 1px solid #1C2431;
+   padding: 0.45em;
+}
 
+footer {
+   grid-column: 1/4;
+   grid-row: 3/4;
+   background-image: url("/img/salmon.png");
+   background-size: contain;
+
+}
 
