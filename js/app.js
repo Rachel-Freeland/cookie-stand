@@ -164,9 +164,7 @@ function handleSubmit(event) {
   storeList.push(newStore);
 
   newStore.createTableBody();
-  clearTableFoot();
   dailyTotals();
-  renderTableFooter();
   event.target.reset();
 }
 
@@ -174,13 +172,8 @@ function renderAllStores() {
   for(let i = 0; i < storeList.length; i++) {
     storeList[i].createTableBody();
   }
-  renderTableFooter();
 }
 
-function clearTableFoot() {
-  const tableElement = document.getElementById('tableFoot');
-  tableElement.innerHTML = ' ';
-}
 
 
 //--------------------------------------------------------------------------------------------Event Listeners------------------------------------------------------------------------------------------------
@@ -209,3 +202,4 @@ lima.setCookiesSoldPerHour();
 dailyTotals();
 createTableHead();
 renderAllStores();
+renderTableFooter();
