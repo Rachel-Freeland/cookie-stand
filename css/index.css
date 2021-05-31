@@ -1,5 +1,5 @@
 body {
-  background-color: #FDC689;
+  background-color: #FDC689 !important;
   color: #1C2431;
   display: grid;
   grid-template-columns: repeat(3, 33vw);
@@ -31,13 +31,14 @@ header h1 {
 nav {
   grid-column: 1/2;
   grid-row: 1/2;
+  padding-left: 5em;
+  padding-top: 2em;
 }
 
 nav li {
   color: #1C2431;
   font-size: 1.2em;
-  padding-left: 10em;
-  padding-top: 5em;
+  padding: 0.5em;
 }
 
 #fishCookies {
@@ -54,8 +55,6 @@ img.rounded {
   border-radius: 30%;
   border: 1em #FF6700 solid;
 }
-
-
 
 #familyImg {
   grid-column: 2/3;
@@ -140,7 +139,7 @@ footer {
 footer h3 {
   font-family: 'Mystery Quest', cursive;
   font-size: 1.5em;
-  font-weight: 500;
+  font-weight: 600 !important;
   text-shadow: 2px 2px whitesmoke;
 }
 
@@ -166,6 +165,12 @@ p {
 #shirt p{
   padding-top: 0.25em;
   text-align: center;
+}
+
+span {
+  font-weight: 600;
+  font-family: 'Mystery Quest', cursive;
+  text-shadow: 0.75px 0.75px whitesmoke;
 }
 
 

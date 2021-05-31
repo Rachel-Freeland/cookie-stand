@@ -152,6 +152,45 @@ function renderTableFooter () {
   trFootElem.appendChild(tdFinalTotal);
 }
 
+function handleSubmit(event) {
+  event.preventDefault();
+  let store = event.target.store.value;
+  let minCustomers = parseInt(event.target.minCustomers.value);
+  let maxCustomers = parseInt(event.target.maxCustomers.value);
+  let avgCookiesPerCustomer = parseInt(event.target.avgCookiesPerCustomer.value);
+
+  let newStore = new Store(store, minCustomers, maxCustomers, avgCookiesPerCustomer, storeHours);
+  newStore.setCookiesSoldPerHour();
+  storeList.push(newStore);
+
+  newStore.createTableBody();
+  clearTableFoot();
+  dailyTotals();
+  renderTableFooter();
+  event.target.reset();
+}
+
+function renderAllStores() {
+  for(let i = 0; i < storeList.length; i++) {
+    storeList[i].createTableBody();
+  }
+  renderTableFooter();
+}
+
+function clearTableFoot() {
+  const tableElement = document.getElementById('tableFoot');
+  tableElement.innerHTML = ' ';
+}
+
+
+//--------------------------------------------------------------------------------------------Event Listeners------------------------------------------------------------------------------------------------
+
+// identify target to listent to
+const formElem = document.getElementById('addStore');
+
+// identify event to listen for and attach an event listener
+formElem.addEventListener('submit', handleSubmit);
+
 
 //--------------------------------------------------------------------------------------------Function Calls-------------------------------------------------------------------------------------------------
 // create new stores
@@ -161,21 +200,12 @@ let dubai = new Store('Dubai', 11, 38, 3.7, storeHours);
 let paris = new Store('Paris', 20, 38, 2.3, storeHours);
 let lima = new Store('Lima', 2, 16, 4.6, storeHours);
 
-createTableHead();
+
 seattle.setCookiesSoldPerHour();
-seattle.createTableBody();
-
 tokyo.setCookiesSoldPerHour();
-tokyo.createTableBody();
-
 dubai.setCookiesSoldPerHour();
-dubai.createTableBody();
-
 paris.setCookiesSoldPerHour();
-paris.createTableBody();
-
 lima.setCookiesSoldPerHour();
-lima.createTableBody();
-
 dailyTotals();
-renderTableFooter();
+createTableHead();
+renderAllStores();

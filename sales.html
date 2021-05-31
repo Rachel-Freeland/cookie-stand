@@ -21,13 +21,44 @@
     </header>
     <nav>
       <ul>
-        <li><a href="index.html">Home Page</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="orderForm.html">Order Form</a></li>
       </ul>
     </nav>
 
     <div id="cookieSales">
       <!-- generate from JS -->
     </div>
+
+    <aside>
+      <form id="addStore">
+        <fieldset>
+          <legend>Enter a new store:</legend>
+          <br>
+          <label>
+            Store:
+            <input name="store" type="text">
+          </label>
+          <br><br>
+          <label>
+            Min. Customers / Hr:
+            <input name="minCustomers" type="text">          
+          </label>
+          <br><br>
+          <label>
+            Max Customers / Hr:
+            <input name="maxCustomers" type="text">
+          </label>
+          <br><br>
+          <label>
+            Avg. Cookies Per Customer
+            <input name="avgCookiesPerCustomer" type="text">
+          </label>
+        </fieldset>
+        <br>
+        <button>Submit</button>
+      </form>
+    </aside>
 
     <footer>
       
