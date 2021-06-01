@@ -128,7 +128,7 @@ fieldset label {
 footer {
    grid-column: 1/4;
    grid-row: 3/4;
-   background-image: url("../img/salmon.png");
+   background-image: url("img/salmon.png");
    background-size: contain;
 
 }
