@@ -3,7 +3,7 @@ body {
   color: #1C2431;
   display: grid;
   grid-template-columns: repeat(3, 33vw);
-  grid-template-rows: 20vh 30vh 30vh 10vh;
+  grid-template-rows: 15vh 35vh 35vh 15vh;
 }
 h1 {
   color: #1C2431;
@@ -14,6 +14,10 @@ h1 {
 h2 {
   font-size: 2.25em;
   font-family: 'Mystery Quest', cursive;
+}
+
+h3 {
+  font-size: 1.75em;
 }
 
 header {
@@ -46,9 +50,8 @@ nav li {
   grid-row: 3/5;
   width: 30vw;
   height: 30vh;
-  margin: auto auto;
-  padding-left: 10em;
-  padding-top: 1em;
+  margin-left: 1.5em;
+  padding-left: 7em;
 }
 
 img.rounded {
@@ -77,12 +80,24 @@ img.rounded {
   grid-row: 3/4;
 }
 
+#aboutUs a{
+  padding-left: 14.5vw;
+}
+
 #aboutUs h2 {
   display: block;
   text-align: center;
   padding-bottom: 1em;
   padding-top: 1em;
   text-shadow: 2px 2px whitesmoke;
+}
+
+#aboutUs h3 {
+  color: #1C2431;
+  font-family: 'Mystery Quest', cursive;
+  padding-top: 1.5em;
+  text-align: center;
+  text-shadow: 1px 1px whitesmoke;
 }
 
 #aboutUs p {
@@ -94,13 +109,12 @@ img.rounded {
 #cookie {
   grid-column: 3/4;
   grid-row: 3/5;
-  margin: auto auto;
 }
 
 #cookie img {
   border: 0.3em #FF6700 solid;
   border-radius: 25%;
-  vertical-align: middle;
+  vertical-align: top center;
 }
 
 #locations {
@@ -134,17 +148,20 @@ footer {
   grid-row: 4/5;
   padding: 0.25em;
   text-align: center;
+  background-image: url("../img/salmon.png");
+  background-size: contain;
 }
 
 footer h3 {
   font-family: 'Mystery Quest', cursive;
   font-size: 1.5em;
   font-weight: 600 !important;
+  padding-bottom: 2vh;
   text-shadow: 2px 2px whitesmoke;
 }
 
 footer a{
-  padding: 0.25em;
+
 }
 
 p {
