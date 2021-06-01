@@ -52,6 +52,7 @@ nav li {
   height: 30vh;
   margin-left: 1.5em;
   padding-left: 7em;
+  padding-top: 2em;
 }
 
 img.rounded {
@@ -70,7 +71,7 @@ img.rounded {
   border-top-left-radius: 25%;
   border-bottom-right-radius: 25%;
   display: block;
-  height: 29vh;
+  height: 32vh;
   margin-right: auto;
   width: 32vw;
 }
@@ -81,21 +82,23 @@ img.rounded {
 }
 
 #aboutUs a{
-  padding-left: 14.5vw;
+  display: block;
+  text-align:center;
+  
 }
 
 #aboutUs h2 {
   display: block;
   text-align: center;
-  padding-bottom: 1em;
-  padding-top: 1em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
   text-shadow: 2px 2px whitesmoke;
 }
 
 #aboutUs h3 {
   color: #1C2431;
   font-family: 'Mystery Quest', cursive;
-  padding-top: 1.5em;
+  padding-top: 1em;
   text-align: center;
   text-shadow: 1px 1px whitesmoke;
 }
